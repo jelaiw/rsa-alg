@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "gcd"
+name = "rsa-alg"
 version = "0.1.0"
