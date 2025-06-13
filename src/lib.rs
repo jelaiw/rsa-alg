@@ -16,6 +16,21 @@ pub fn lcm(a: i64, b: i64) -> i64 {
     (a / gcd(a, b)) * b
 }
 
+pub fn fast_exp(num: i64, pow: i64) -> i64 {
+    if pow == 0 {
+        return 1;
+    }
+    if pow == 1 {
+        return num;
+    }
+    if pow % 2 == 0 {
+        return fast_exp(num * num, pow / 2);
+    }
+    else {
+        return fast_exp(num, pow - 1) * num;
+    }
+}
+
 pub fn get_i64(prompt: &str) -> i64 {
     print!("{prompt}");
     std::io::stdout().flush().unwrap();
