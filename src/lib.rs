@@ -31,6 +31,21 @@ pub fn fast_exp(num: i64, pow: i64) -> i64 {
     }
 }
 
+pub fn fast_exp_mod(num: i64, pow: i64, modulus: i64) -> i64 {
+    if pow == 0 {
+        return 1;
+    }
+    if pow == 1 {
+        return num;
+    }
+    if pow % 2 == 0 {
+        return fast_exp_mod(num * num % modulus, pow / 2, modulus);
+    }
+    else {
+        return fast_exp_mod(num, pow - 1, modulus) * num % modulus;
+    }
+}
+
 pub fn get_i64(prompt: &str) -> i64 {
     print!("{prompt}");
     std::io::stdout().flush().unwrap();
