@@ -17,6 +17,7 @@ pub fn lcm(a: i64, b: i64) -> i64 {
     (a / gcd(a, b)) * b
 }
 
+// Algorithm (elegant, recursive) from modular exponentiation reading (Kulikov).
 pub fn fast_exp(num: i64, pow: i64) -> i64 {
     if pow == 0 {
         return 1;
