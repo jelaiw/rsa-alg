@@ -1,5 +1,6 @@
 use rsa_alg::get_i64;
 
+// See https://www.khanacademy.org/computing/computer-science/cryptography/comp-number-theory/a/trial-division.
 fn min_divisor(m: i64) -> i64 {
     for d in 2..m {
         if m % d == 0 {
