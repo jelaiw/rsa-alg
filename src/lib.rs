@@ -1,5 +1,6 @@
 use std::io::Write;
 
+// Algorithm based on Euclid's lemma lecture from Kulikov number theory course.
 pub fn gcd(mut a: i64, mut b: i64) -> i64 {
     while a > 0 && b > 0 {
         if a >= b {
