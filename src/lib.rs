@@ -14,6 +14,7 @@ pub fn gcd(mut a: i64, mut b: i64) -> i64 {
 }
 
 pub fn lcm(a: i64, b: i64) -> i64 {
+    // Nice detail from Stephens to divide by gcd first to avoid integer overflow.
     (a / gcd(a, b)) * b
 }
 
@@ -48,6 +49,7 @@ pub fn fast_exp_mod(num: i64, pow: i64, modulus: i64) -> i64 {
     }
 }
 
+// Helper function from Stephens.
 pub fn get_i64(prompt: &str) -> i64 {
     print!("{prompt}");
     std::io::stdout().flush().unwrap();
