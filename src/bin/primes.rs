@@ -12,9 +12,19 @@ fn min_divisor(m: i64) -> i64 {
     m
 }
 
+fn is_prime(m: i64) -> bool {
+    m == min_divisor(m)
+}
+
 fn main() {
     loop {
         let m = get_i64("m = ");
-        println!("{}", min_divisor(m));
+        print!("The smallest divisor of {m} is {}", min_divisor(m));
+        if is_prime(m) {
+            println!(", so it is prime.");
+        }
+        else {
+            println!(".");
+        }
     }
 }
