@@ -14,6 +14,7 @@ fn min_divisor(m: i64) -> i64 {
     m
 }
 
+#[allow(dead_code)]
 fn is_prime(m: i64) -> bool {
     m == min_divisor(m)
 }
