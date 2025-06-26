@@ -8,3 +8,4 @@ Third project in Rod Stephens' "Algorithms in Rust" Manning LiveProject series.
 2. OnlineGDB: online compiler and debugger for C/C++, https://www.onlinegdb.com/.
 2. "The Euclidean Algorithm". Khan Academy, https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm.
 2. Number Theory and Cryptography. Levin M, Kulikov A. University of California San Diego, https://www.coursera.org/learn/number-theory-cryptography.
+2. "Sieve of Eratosthenes". Cruise, B. Khan Academy, https://www.khanacademy.org/computing/computer-science/cryptography/comp-number-theory/v/sieve-of-eratosthenes-prime-adventure-part-4.

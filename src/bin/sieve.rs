@@ -2,6 +2,7 @@ use std::collections::HashMap;
 use rsa_alg::get_i64;
 
 // Build a sieve of Eratosthenes.
+// Based mostly on Brit Cruise algorithm where unmarked are prime and multiples of primes are "marked".
 fn sieve_of_eratosthenes(max: usize) -> Vec<bool> {
     let mut map: HashMap<usize, bool> = HashMap::new();
     for n in 2..max {
