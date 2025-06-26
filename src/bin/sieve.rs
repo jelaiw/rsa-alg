@@ -1,29 +1,25 @@
-use std::collections::HashMap;
 use rsa_alg::get_i64;
 
-// Build a sieve of Eratosthenes.
-// Based mostly on Brit Cruise algorithm where unmarked are prime and multiples of primes are "marked".
 fn sieve_of_eratosthenes(max: usize) -> Vec<bool> {
-    let mut map: HashMap<usize, bool> = HashMap::new();
-    for n in 2..max {
-        if !map.contains_key(&n) { // If n is unmarked, it is prime.
-            map.insert(n, true);
-        }
+    let mut sieve = vec![false; max + 1];
 
-        let is_prime = map.get(&n).copied().unwrap();
-        if is_prime {
-            for i in 2..max {
-                let multiple = n * i;
-                map.entry(multiple).or_insert(false);
+    sieve[2] = true; // 2 is prime.
+
+    // Initialize odd numbers to prime.
+    for p in (3..=max).step_by(2) {
+        sieve[p] = true;
+    }
+
+    for p in (3..=max).step_by(2) {
+        if sieve[p] {
+            // Multiples of primes are not prime.
+            for m in (p * p..=max).step_by(p) {
+                sieve[m] = false;
             }
         }
     }
 
-    let mut v = vec![false; max];
-    for i in 2..max {
-        v[i] = map.get(&i).copied().unwrap();
-    }
-    v
+    sieve
 }
 
 // Print out the primes from the sieve.
@@ -42,8 +38,6 @@ fn print_sieve(sieve: &Vec<bool>) {
 // Convert sieve to vector of prime numbers.
 fn sieve_to_primes(sieve: &Vec<bool>) -> Vec<i64> {
     let mut v = vec![2];
-    // Implement "don't loop over even values" hint from Stephens.
-    // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.step_by
     for i in (3..sieve.len()).step_by(2) {
         if sieve[i] {
             // Note usize to i64 here.
