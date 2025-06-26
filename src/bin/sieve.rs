@@ -13,6 +13,7 @@ fn sieve_of_eratosthenes(max: usize) -> Vec<bool> {
     for p in (3..=max).step_by(2) {
         if sieve[p] {
             // Multiples of primes are not prime.
+            // Stephens p * 3 is not explained, p^2 optimization described by Cruise in [5].
             for m in (p * p..=max).step_by(p) {
                 sieve[m] = false;
             }
