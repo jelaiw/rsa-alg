@@ -36,8 +36,10 @@ fn print_sieve(sieve: &Vec<bool>) {
 }
 
 fn sieve_to_primes(sieve: &Vec<bool>) -> Vec<i64> {
-    let mut v = Vec::new();
-    for i in 0..sieve.len() {
+    let mut v = vec![2];
+    // Implement "don't loop over even values" hint from Stephens.
+    // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.step_by
+    for i in (3..sieve.len()).step_by(2) {
         if sieve[i] {
             // Note usize to i64 here.
             // Read more at https://stackoverflow.com/a/55769098.
