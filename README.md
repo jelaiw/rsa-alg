@@ -1,7 +1,9 @@
 ## Overview
-Repo for submitting solutions.
+Repo for sharing solutions with fellow learners.
 
-Third project in Rod Stephens' "Algorithms in Rust" Manning LiveProject series. 
+Third project in Rod Stephens "Algorithms in Rust" Manning LiveProject series. 
+
+Have fun!!
 
 ## References
 1. "Algorithms in Rust: Public Key Cryptography". Stephens, R. Manning LiveProject, https://www.manning.com/liveproject/public-key-cryptography-rust.
