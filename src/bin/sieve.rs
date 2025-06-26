@@ -1,5 +1,7 @@
 use std::collections::HashMap;
+use rsa_alg::get_i64;
 
+// Build a sieve of Eratosthenes.
 fn sieve_of_eratosthenes(max: usize) -> Vec<bool> {
     let mut map: HashMap<usize, bool> = HashMap::new();
     for n in 2..max {
@@ -23,6 +25,7 @@ fn sieve_of_eratosthenes(max: usize) -> Vec<bool> {
     v
 }
 
+// Print out the primes from the sieve.
 fn print_sieve(sieve: &Vec<bool>) {
     print!("2");
     // Implement "don't loop over even values" hint from Stephens.
@@ -35,6 +38,7 @@ fn print_sieve(sieve: &Vec<bool>) {
     println!();
 }
 
+// Convert sieve to vector of prime numbers.
 fn sieve_to_primes(sieve: &Vec<bool>) -> Vec<i64> {
     let mut v = vec![2];
     // Implement "don't loop over even values" hint from Stephens.
@@ -49,6 +53,7 @@ fn sieve_to_primes(sieve: &Vec<bool>) -> Vec<i64> {
     v
 }
 
+// Print the vector of numbers.
 fn print_numbers(primes: &Vec<i64>) {
     for prime in primes {
         print!("{prime} ");
@@ -57,11 +62,17 @@ fn print_numbers(primes: &Vec<i64>) {
 }
 
 fn main() {
-    let max = 100;
-    let sieve = sieve_of_eratosthenes(max);
-    println!("max = {max}");
-    print_sieve(&sieve);
+    let max = get_i64("max = ");
+
+    let sieve = sieve_of_eratosthenes(max as usize);
+    if max < 1000 {
+        print_sieve(&sieve);
+    }
+
     let primes = sieve_to_primes(&sieve);
+    if max < 1000 {
+        print_numbers(&primes);
+    }
+
     println!("There are {} primes less than {max}.", primes.len());
-    print_numbers(&primes);
 }
