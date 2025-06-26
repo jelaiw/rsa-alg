@@ -25,6 +25,8 @@ fn sieve_of_eratosthenes(max: usize) -> Vec<bool> {
 
 fn print_sieve(sieve: &Vec<bool>) {
     print!("2");
+    // Implement "don't loop over even values" hint from Stephens.
+    // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.step_by
     for n in (3..sieve.len()).step_by(2) {
         if sieve[n] {
             print!(" {n}");
