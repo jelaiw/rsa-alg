@@ -39,6 +39,8 @@ fn sieve_to_primes(sieve: &Vec<bool>) -> Vec<i64> {
     let mut v = Vec::new();
     for i in 0..sieve.len() {
         if sieve[i] {
+            // Note usize to i64 here.
+            // Read more at https://stackoverflow.com/a/55769098.
             v.push(i.try_into().unwrap());
         }
     }
