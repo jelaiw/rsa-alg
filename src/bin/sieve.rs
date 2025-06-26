@@ -49,6 +49,13 @@ fn sieve_to_primes(sieve: &Vec<bool>) -> Vec<i64> {
     v
 }
 
+fn print_numbers(primes: &Vec<i64>) {
+    for prime in primes {
+        print!("{prime} ");
+    }
+    println!();
+}
+
 fn main() {
     let max = 100;
     let sieve = sieve_of_eratosthenes(max);
@@ -56,5 +63,5 @@ fn main() {
     print_sieve(&sieve);
     let primes = sieve_to_primes(&sieve);
     println!("There are {} primes less than {max}.", primes.len());
-    println!("{:?}", primes);
+    print_numbers(&primes);
 }
