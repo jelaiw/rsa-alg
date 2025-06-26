@@ -3,7 +3,7 @@ use std::collections::HashMap;
 fn sieve_of_eratosthenes(max: usize) -> Vec<bool> {
     let mut map: HashMap<usize, bool> = HashMap::new();
     for n in 2..max {
-        if !map.contains_key(&n) { // n is unmarked.
+        if !map.contains_key(&n) { // If n is unmarked, it is prime.
             map.insert(n, true);
         }
 
@@ -25,7 +25,7 @@ fn sieve_of_eratosthenes(max: usize) -> Vec<bool> {
 
 fn print_sieve(sieve: &Vec<bool>) {
     print!("2");
-    for n in 3..sieve.len() {
+    for n in (3..sieve.len()).step_by(2) {
         if sieve[n] {
             print!(" {n}");
         }
@@ -33,9 +33,22 @@ fn print_sieve(sieve: &Vec<bool>) {
     println!();
 }
 
+fn sieve_to_primes(sieve: &Vec<bool>) -> Vec<i64> {
+    let mut v = Vec::new();
+    for i in 0..sieve.len() {
+        if sieve[i] {
+            v.push(i.try_into().unwrap());
+        }
+    }
+    v
+}
+
 fn main() {
     let max = 100;
     let sieve = sieve_of_eratosthenes(max);
     println!("max = {max}");
     print_sieve(&sieve);
+    let primes = sieve_to_primes(&sieve);
+    println!("There are {} primes less than {max}.", primes.len());
+    println!("{:?}", primes);
 }
