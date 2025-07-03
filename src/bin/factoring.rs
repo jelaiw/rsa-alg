@@ -21,14 +21,14 @@ fn is_prime(m: i64) -> bool {
 
 // Return prime factors of m.
 // Algorithm from Kulikov factoring reading.
-fn factors(m: i64) -> Vec<i64> {
+fn find_factors(m: i64) -> Vec<i64> {
     let d = min_divisor(m);
     if d == m { // m is prime.
         let v = vec![d];
         v
     }
     else {
-        let mut factors = factors(m / d);
+        let mut factors = find_factors(m / d);
         factors.push(d);
         return factors;
     }
@@ -45,7 +45,7 @@ fn multiply_factors(v: Vec<i64>) -> i64 {
 fn main() {
     loop {
         let m = get_i64("m = ");
-        let factors = factors(m);
+        let factors = find_factors(m);
         println!("Factoring of {m}: {:?}", factors);
         assert_eq!(m, multiply_factors(factors));
     }
