@@ -34,9 +34,19 @@ fn factors(m: i64) -> Vec<i64> {
     }
 }
 
+fn multiply_factors(v: Vec<i64>) -> i64 {
+    let mut product = 1;
+    for x in v {
+        product *= x; // Integer overflow??
+    }
+    product
+}
+
 fn main() {
     loop {
         let m = get_i64("m = ");
-        println!("Factoring of {m}: {:?}", factors(m));
+        let factors = factors(m);
+        println!("Factoring of {m}: {:?}", factors);
+        assert_eq!(m, multiply_factors(factors));
     }
 }
