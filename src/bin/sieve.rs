@@ -1,27 +1,4 @@
-use rsa_alg::get_i64;
-
-fn sieve_of_eratosthenes(max: usize) -> Vec<bool> {
-    let mut sieve = vec![false; max + 1];
-
-    sieve[2] = true; // 2 is prime.
-
-    // Initialize odd numbers to prime.
-    for p in (3..=max).step_by(2) {
-        sieve[p] = true;
-    }
-
-    for p in (3..=max).step_by(2) {
-        if sieve[p] {
-            // Multiples of primes are not prime.
-            // Stephens p * 3 is not explained, p^2 optimization described by Cruise in [5].
-            for m in (p * p..=max).step_by(p) {
-                sieve[m] = false;
-            }
-        }
-    }
-
-    sieve
-}
+use rsa_alg::{get_i64, sieve_of_eratosthenes, sieve_to_primes};
 
 // Print out the primes from the sieve.
 fn print_sieve(sieve: &Vec<bool>) {
@@ -34,19 +11,6 @@ fn print_sieve(sieve: &Vec<bool>) {
         }
     }
     println!();
-}
-
-// Convert sieve to vector of prime numbers.
-fn sieve_to_primes(sieve: &Vec<bool>) -> Vec<i64> {
-    let mut v = vec![2];
-    for i in (3..sieve.len()).step_by(2) {
-        if sieve[i] {
-            // Note usize to i64 here.
-            // Read more at https://stackoverflow.com/a/55769098.
-            v.push(i.try_into().unwrap());
-        }
-    }
-    v
 }
 
 // Print the vector of numbers.
