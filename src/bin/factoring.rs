@@ -92,6 +92,9 @@ fn main() {
 
     benchmark(312680865509917, &primes);
     benchmark(1819448968910731, &primes);
+    benchmark(12345678901234, &primes); // Has small factors, so sieve may not be faster.
+    benchmark(6795742697625173, &primes);
+    benchmark(64374108854777, &primes); // Big prime, might be slowest.
 
     loop {
         let m = get_i64("m = ");
