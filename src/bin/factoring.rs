@@ -55,7 +55,7 @@ fn find_factors_sieve(m: i64, primes: &Vec<i64>) -> Vec<i64> {
         v
     }
     else {
-        let mut factors = find_factors(m / d);
+        let mut factors = find_factors_sieve(m / d, primes);
         factors.push(d);
         return factors;
     }
