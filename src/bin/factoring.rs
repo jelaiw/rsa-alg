@@ -87,7 +87,8 @@ fn benchmark(m: i64, primes: &Vec<i64>) {
 }
 
 fn main() {
-    let sieve = sieve_of_eratosthenes(10_000_000);
+    const MAX_PRIME: usize = 10_000_000; // Biggest number sieve will consider.
+    let sieve = sieve_of_eratosthenes(MAX_PRIME);
     let primes = sieve_to_primes(&sieve);
 
     benchmark(312680865509917, &primes);
