@@ -98,3 +98,22 @@ pub fn get_i64(prompt: &str) -> i64 {
     let trimmed = str_value.trim();
     trimmed.parse::<i64>().expect("Error parsing integer")
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{gcd, lcm};
+
+    #[test]
+    fn gcd_expected_values_from_given_validation_table() {
+        assert_eq!(6, gcd(270, 192));
+        assert_eq!(77, gcd(7469, 2464));
+        assert_eq!(970, gcd(55290, 115430));
+    }
+
+    #[test]
+    fn lcm_expected_values_from_given_validation_table() {
+        assert_eq!(8640, lcm(270, 192));
+        assert_eq!(239008, lcm(7469, 2464));
+        assert_eq!(6579510, lcm(55290, 115430));
+    }
+}
