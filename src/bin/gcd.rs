@@ -1,14 +1,6 @@
 use rsa_alg::{gcd, lcm, get_i64};
 
 fn main() {
-    let a = 270;
-    let b = 192;
-    println!("gcd({a}, {b}) = {}", gcd(a, b));
-
-    let a = 192;
-    let b = 270;
-    println!("gcd({a}, {b}) = {}", gcd(a, b));
-
     let a = 12;
     let b = 18;
     println!("gcd({a}, {b}) = {}", gcd(a, b));
