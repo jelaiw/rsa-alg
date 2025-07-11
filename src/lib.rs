@@ -111,6 +111,13 @@ mod tests {
     }
 
     #[test]
+    fn gcd_swap_argument_order() {
+        assert_eq!(6, gcd(192, 270));
+        assert_eq!(77, gcd(2464, 7469));
+        assert_eq!(970, gcd(115430, 55290));
+    }
+
+    #[test]
     fn lcm_expected_values_from_given_validation_table() {
         assert_eq!(8640, lcm(270, 192));
         assert_eq!(239008, lcm(7469, 2464));
