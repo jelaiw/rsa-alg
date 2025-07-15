@@ -101,7 +101,23 @@ pub fn get_i64(prompt: &str) -> i64 {
 
 #[cfg(test)]
 mod tests {
-    use super::{gcd, lcm};
+    use super::{gcd, lcm, fast_exp, fast_exp_mod};
+
+    #[test]
+    fn fast_exp_mod_expected_values_from_given_validation_table() {
+        assert_eq!(4, fast_exp_mod(8, 6, 10));
+        assert_eq!(65, fast_exp_mod(7, 10, 101));
+        assert_eq!(179, fast_exp_mod(9, 13, 283));
+        assert_eq!(293, fast_exp_mod(213, 5, 1000));
+    }
+
+    #[test]
+    fn fast_exp_expected_values_from_given_validation_table() {
+        assert_eq!(262144, fast_exp(8, 6));
+        assert_eq!(282475249, fast_exp(7, 10));
+        assert_eq!(2541865828329, fast_exp(9, 13));
+        assert_eq!(438427732293, fast_exp(213, 5));
+    }
 
     #[test]
     fn gcd_expected_values_from_given_validation_table() {
