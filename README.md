@@ -13,3 +13,4 @@ Have fun!!
 2. "Sieve of Eratosthenes". Cruise, B. Khan Academy, https://www.khanacademy.org/computing/computer-science/cryptography/comp-number-theory/v/sieve-of-eratosthenes-prime-adventure-part-4.
 2. "Probabilistically determine whether a number is prime in C#". Stephens, R. C# Helper, http://csharphelper.com/howtos/howto_check_primality.html.
 2. "Fermat number". Wikipedia, https://en.wikipedia.org/wiki/Fermat_number.
+2. Rust rand crate gen_range. https://docs.rs/rand/latest/rand/trait.Rng.html#method.gen_range.
