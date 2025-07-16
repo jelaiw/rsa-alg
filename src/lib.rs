@@ -2,14 +2,14 @@ use std::io::Write;
 use rand::Rng;
 
 // Algorithm described at http://csharphelper.com/howtos/howto_check_primality.html.
-pub fn is_probable_prime(p: i64, num_tests: u8) -> bool {
-    for _i in 0..num_tests {
+pub fn is_probable_prime(p: i64, k: u8) -> bool {
+    for _i in 0..k {
         let x = rand::thread_rng().gen_range(2..p);
         if fast_exp_mod(x, p-1, p) != 1 {
             return false; // Fermat witness.
         }
     }
-    true
+    true // Probability of (1/2)^k that randomly chosen x values are all Fermat liars.
 }
 
 pub fn sieve_of_eratosthenes(max: usize) -> Vec<bool> {
