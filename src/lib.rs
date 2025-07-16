@@ -101,7 +101,17 @@ pub fn get_i64(prompt: &str) -> i64 {
 
 #[cfg(test)]
 mod tests {
-    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes};
+    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes};
+
+    #[test]
+    fn sieve_to_primes_verify_max_100() {
+        let sieve = sieve_of_eratosthenes(100);
+        let primes = sieve_to_primes(&sieve);
+        assert_eq!(25, primes.len());
+        // Given by instructor for verifying program output.
+        let expected = vec![2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
+        assert_eq!(expected, primes);
+    }
 
     #[test]
     fn sieve_of_eratosthenes_max_semantics() {
