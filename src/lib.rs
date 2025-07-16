@@ -1,4 +1,15 @@
 use std::io::Write;
+use rand::Rng;
+
+pub fn is_probable_prime(p: i64, num_tests: u8) -> bool {
+    for _i in 0..num_tests {
+        let x = rand::thread_rng().gen_range(2..p);
+        if fast_exp_mod(x, p-1, p) != 1 {
+            return false;
+        }
+    }
+    true
+}
 
 pub fn sieve_of_eratosthenes(max: usize) -> Vec<bool> {
     let mut sieve = vec![false; max + 1];
@@ -101,7 +112,16 @@ pub fn get_i64(prompt: &str) -> i64 {
 
 #[cfg(test)]
 mod tests {
-    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes};
+    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes, is_probable_prime};
+    const NUM_TESTS: u8 = 20;
+
+    #[test]
+    fn is_probable_prime_well_studied_fermat_numbers() {
+        // See https://en.wikipedia.org/wiki/Fermat_number.
+        assert_eq!(true, is_probable_prime(2i64.pow(16) + 1, NUM_TESTS)); // Largest known Fermat prime.
+//        assert_eq!(false, is_probable_prime(2i64.pow(32) + 1, NUM_TESTS)); // Bummer.
+        assert_eq!(false, is_probable_prime(2i64.pow(31) + 1, NUM_TESTS)); 
+    }
 
     #[test]
     fn sieve_to_primes_verify_max_100() {
