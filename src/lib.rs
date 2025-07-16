@@ -101,7 +101,29 @@ pub fn get_i64(prompt: &str) -> i64 {
 
 #[cfg(test)]
 mod tests {
-    use super::{gcd, lcm, fast_exp, fast_exp_mod};
+    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes};
+
+    #[test]
+    fn sieve_of_eratosthenes_max_semantics() {
+        // If the max parameter is the largest number the sieve will consider, then
+        // the vector must be of size max + 1 in order to index sieve[max].
+        let max = 100;
+        let sieve = sieve_of_eratosthenes(max);
+        assert_eq!(max + 1, sieve.len());
+    }
+
+    #[test]
+    fn sieve_of_eratosthenes_indexing_semantics() {
+        let max = 20;
+        let sieve = sieve_of_eratosthenes(max);
+        assert_eq!(false, sieve[0]); // 0 is not prime.
+        assert_eq!(false, sieve[1]); // 1 is not prime.
+        assert_eq!(true, sieve[2]); // 2 is prime.
+        assert_eq!(true, sieve[3]); // 3 is prime.
+        assert_eq!(false, sieve[4]); // 4 is not prime.
+        assert_eq!(false, sieve[20]); // 20 is not prime.
+        assert_eq!(true, sieve[19]); // 19 is prime.
+    }
 
     #[test]
     fn fast_exp_mod_expected_values_from_given_validation_table() {
