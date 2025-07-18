@@ -14,3 +14,4 @@ Have fun!!
 2. "Probabilistically determine whether a number is prime in C#". Stephens, R. C# Helper, http://csharphelper.com/howtos/howto_check_primality.html.
 2. "Fermat number". Wikipedia, https://en.wikipedia.org/wiki/Fermat_number.
 2. Rust rand crate gen_range. https://docs.rs/rand/latest/rand/trait.Rng.html#method.gen_range.
+2. "Find random prime numbers in C#". Stephens, R. C# Helper, http://csharphelper.com/howtos/howto_find_primes.html.
