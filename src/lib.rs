@@ -6,7 +6,7 @@ pub fn is_probable_prime(p: i64, k: u8) -> bool {
     for _i in 0..k {
         // Stephens notes that the rand crate did not work for him, but it seems to work
         // now, so skipping the roll-your-own PRNG stuff from the workflow instructions.
-        let x = rand::thread_rng().gen_range(2..p);
+        let x = rand::rng().random_range(2..p);
         if fast_exp_mod(x, p-1, p) != 1 {
             return false; // Fermat witness.
         }
