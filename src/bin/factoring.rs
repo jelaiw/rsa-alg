@@ -104,3 +104,17 @@ fn main() {
         assert_eq!(m, multiply_factors(factors));
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::find_factors;
+
+    #[test]
+    fn find_factors_kulikov_examples() {
+        assert_eq!(find_factors(7), vec![7]);
+        assert_eq!(find_factors(60), vec![5, 3, 2, 2]);
+        assert_eq!(find_factors(1001), vec![13, 11, 7]);
+        assert_eq!(find_factors(4294967297), vec![6700417, 641]); // 2^32 + 1 from Euler.
+//        assert_eq!(find_factors(18446744073709551617), vec![67280421310721, 274177]); // Need bigger integer type for 2^64 + 1.
+    }
+}
