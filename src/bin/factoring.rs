@@ -110,6 +110,14 @@ mod tests {
     use super::find_factors;
 
     #[test]
+    fn find_factors_stephens_solution_examples() {
+        assert_eq!(find_factors(2237829179950823), vec![224444333, 9970531]);
+        assert_eq!(find_factors(99999909290000639), vec![9999999929, 9999991]);
+        assert_eq!(find_factors(82493682586108949), vec![1198069, 23029, 8147, 367]);
+        assert_eq!(find_factors(1234567890123), vec![116216501, 3541, 3]);
+    }
+
+    #[test]
     fn find_factors_kulikov_examples() {
         assert_eq!(find_factors(7), vec![7]);
         assert_eq!(find_factors(60), vec![5, 3, 2, 2]);
