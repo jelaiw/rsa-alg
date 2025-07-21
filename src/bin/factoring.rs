@@ -107,7 +107,26 @@ fn main() {
 
 #[cfg(test)]
 mod tests {
-    use super::find_factors;
+    use super::{find_factors, find_factors_sieve};
+    use rsa_alg::{sieve_of_eratosthenes, sieve_to_primes};
+
+    #[test]
+    fn find_factors_sieve_stephens_combined() {
+        const MAX_PRIME: usize = 10_000_000; // Biggest number sieve will consider.
+        let sieve = sieve_of_eratosthenes(MAX_PRIME);
+        let primes = sieve_to_primes(&sieve);
+
+        assert_eq!(find_factors_sieve(312680865509917, &primes), vec![40129483, 7791799]);
+//        assert_eq!(find_factors_sieve(1819448968910731, &primes), vec![45339457, 40129483]);
+        assert_eq!(find_factors_sieve(12345678901234, &primes), vec![12079920647, 73, 7, 2]);
+        assert_eq!(find_factors_sieve(6795742697625173, &primes), vec![987654103, 6880691]);
+        assert_eq!(find_factors_sieve(64374108854777, &primes), vec![64374108854777]);
+
+        assert_eq!(find_factors_sieve(2237829179950823, &primes), vec![224444333, 9970531]);
+        assert_eq!(find_factors_sieve(99999909290000639, &primes), vec![9999999929, 9999991]);
+        assert_eq!(find_factors_sieve(82493682586108949, &primes), vec![1198069, 23029, 8147, 367]);
+        assert_eq!(find_factors_sieve(1234567890123, &primes), vec![116216501, 3541, 3]);
+    }
 
     #[test]
     fn find_factors_stephens_validation_results() {
