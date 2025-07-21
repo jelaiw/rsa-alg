@@ -110,6 +110,15 @@ mod tests {
     use super::find_factors;
 
     #[test]
+    fn find_factors_stephens_validation_results() {
+        assert_eq!(find_factors(312680865509917), vec![40129483, 7791799]);
+        assert_eq!(find_factors(1819448968910731), vec![45339457, 40129483]);
+        assert_eq!(find_factors(12345678901234), vec![12079920647, 73, 7, 2]);
+        assert_eq!(find_factors(6795742697625173), vec![987654103, 6880691]);
+        assert_eq!(find_factors(64374108854777), vec![64374108854777]);
+    }
+
+    #[test]
     fn find_factors_stephens_solution_examples() {
         assert_eq!(find_factors(2237829179950823), vec![224444333, 9970531]);
         assert_eq!(find_factors(99999909290000639), vec![9999999929, 9999991]);
