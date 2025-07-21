@@ -126,6 +126,9 @@ mod tests {
         assert_eq!(find_factors_sieve(99999909290000639, &primes), vec![9999999929, 9999991]);
         assert_eq!(find_factors_sieve(82493682586108949, &primes), vec![1198069, 23029, 8147, 367]);
         assert_eq!(find_factors_sieve(1234567890123, &primes), vec![116216501, 3541, 3]);
+
+//        assert_eq!(find_factors_sieve(44711100255155897, &primes), vec![987654103, 45269999]);
+        assert_eq!(find_factors_sieve(714, &primes), vec![17, 7, 3, 2]);
     }
 
     #[test]
