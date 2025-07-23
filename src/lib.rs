@@ -2,7 +2,7 @@ use std::io::Write;
 use rand::Rng;
 
 // Algorithm described at http://csharphelper.com/howtos/howto_check_primality.html.
-pub fn is_probable_prime(p: i64, k: u8) -> bool {
+pub fn is_probably_prime(p: i64, k: u8) -> bool {
     for _i in 0..k {
         // Stephens notes that the rand crate did not work for him, but it seems to work
         // now, so skipping the roll-your-own PRNG stuff from the workflow instructions.
@@ -115,15 +115,15 @@ pub fn get_i64(prompt: &str) -> i64 {
 
 #[cfg(test)]
 mod tests {
-    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes, is_probable_prime};
+    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes, is_probably_prime};
     const NUM_TESTS: u8 = 20;
 
     #[test]
-    fn is_probable_prime_well_studied_fermat_numbers() {
+    fn is_probably_prime_well_studied_fermat_numbers() {
         // See https://en.wikipedia.org/wiki/Fermat_number.
-        assert_eq!(true, is_probable_prime(2i64.pow(16) + 1, NUM_TESTS)); // Largest known Fermat prime.
-//        assert_eq!(false, is_probable_prime(2i64.pow(32) + 1, NUM_TESTS)); // Bummer.
-        assert_eq!(false, is_probable_prime(2i64.pow(31) + 1, NUM_TESTS)); 
+        assert_eq!(true, is_probably_prime(2i64.pow(16) + 1, NUM_TESTS)); // Largest known Fermat prime.
+//        assert_eq!(false, is_probably_prime(2i64.pow(32) + 1, NUM_TESTS)); // Bummer.
+        assert_eq!(false, is_probably_prime(2i64.pow(31) + 1, NUM_TESTS)); 
     }
 
     #[test]
