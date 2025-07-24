@@ -14,7 +14,6 @@ pub fn is_probably_prime(p: i64, k: u8) -> bool {
         }
 
         if fast_exp_mod(x, p-1, p) != 1 {
-            dbg!(x);
             return false; // Fermat composite witness.
         }
     }
