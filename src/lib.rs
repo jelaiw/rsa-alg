@@ -8,7 +8,7 @@ pub fn is_probably_prime(p: i64, k: u8) -> bool {
         // now, so skipping the roll-your-own PRNG stuff from the workflow instructions.
         let x = rand::rng().random_range(2..p);
         if fast_exp_mod(x, p-1, p) != 1 {
-            return false; // Fermat witness.
+            return false; // Fermat composite witness.
         }
     }
     true // Probability of (1/2)^k that randomly chosen x values are all Fermat liars.
