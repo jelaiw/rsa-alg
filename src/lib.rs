@@ -2,8 +2,9 @@ use std::io::Write;
 use rand::Rng;
 
 // Algorithm described at http://csharphelper.com/howtos/howto_check_primality.html.
+// Also, see Brit Cruise's Fermat primality test video (Khan Academy).
 pub fn is_probably_prime(p: i64, k: u8) -> bool {
-    for _i in 0..k {
+    for _i in 0..k { // Perform k trials.
         // Stephens notes that the rand crate did not work for him, but it seems to work
         // now, so skipping the roll-your-own PRNG stuff from the workflow instructions.
         let x = rand::rng().random_range(2..p);
@@ -11,7 +12,9 @@ pub fn is_probably_prime(p: i64, k: u8) -> bool {
             return false; // Fermat composite witness.
         }
     }
-    true // Probability of (1/2)^k that randomly chosen x values are all Fermat liars.
+    // Probability of (1/2)^k that randomly chosen x values across all k trials
+    // are Fermat liars or "fools", as Cruise also describes them in [12].
+    true
 }
 
 pub fn sieve_of_eratosthenes(max: usize) -> Vec<bool> {
