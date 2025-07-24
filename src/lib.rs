@@ -7,8 +7,14 @@ pub fn is_probably_prime(p: i64, k: u8) -> bool {
     for _i in 0..k { // Perform k trials.
         // Stephens notes that the rand crate did not work for him, but it seems to work
         // now, so skipping the roll-your-own PRNG stuff from the workflow instructions.
-        let x = rand::rng().random_range(2..p);
+        let mut x = rand::rng().random_range(2..p);
+        // Fermat's little theorem assumes x is co-prime to p.
+        while gcd(x, p) != 1 {
+            x = rand::rng().random_range(2..p);
+        }
+
         if fast_exp_mod(x, p-1, p) != 1 {
+            dbg!(x);
             return false; // Fermat composite witness.
         }
     }
@@ -120,6 +126,14 @@ pub fn get_i64(prompt: &str) -> i64 {
 mod tests {
     use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes, is_probably_prime};
     const NUM_TESTS: u8 = 20;
+
+//    #[ignore]
+    #[test]
+    fn is_probably_prime_returns_true_for_carmichael_numbers() { // So-called Fermat pseudoprimes.
+        assert_eq!(true, is_probably_prime(561, NUM_TESTS)); // First Carmichael number.
+        assert_eq!(true, is_probably_prime(1105, NUM_TESTS));
+        assert_eq!(true, is_probably_prime(8911, NUM_TESTS));
+    }
 
     #[test]
     fn is_probably_prime_well_studied_fermat_numbers() {
