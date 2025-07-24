@@ -12,6 +12,10 @@ fn find_prime(min: i64, max: i64, num_tests: u8) -> i64 {
 
 fn main() {
     const NUM_TESTS: u8 = 20;
+
+    let prob = 1.0 - 1.0 / 2f64.powi(NUM_TESTS.into());
+    println!("Probability of prime = {prob}");
+
     loop {
         let num_digits = get_i64("# digits (max 9): ");
         if num_digits < 1 || num_digits > 9 {
