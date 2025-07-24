@@ -7,10 +7,10 @@ pub fn is_probably_prime(p: i64, k: u8) -> bool {
     for _i in 0..k { // Perform k trials.
         // Stephens notes that the rand crate did not work for him, but it seems to work
         // now, so skipping the roll-your-own PRNG stuff from the workflow instructions.
-        let mut x = rand::rng().random_range(2..p);
+        let mut x = rand::rng().random_range(1..p);
         // Fermat's little theorem assumes x is co-prime to p.
         while gcd(x, p) != 1 {
-            x = rand::rng().random_range(2..p);
+            x = rand::rng().random_range(1..p);
         }
 
         if fast_exp_mod(x, p-1, p) != 1 {
@@ -127,7 +127,18 @@ mod tests {
     use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes, is_probably_prime};
     const NUM_TESTS: u8 = 20;
 
-//    #[ignore]
+    #[test]
+    fn is_probably_prime_returns_true_for_2() {
+        assert_eq!(true, is_probably_prime(2, NUM_TESTS));
+    }
+
+    #[ignore]
+    #[test]
+    fn is_probably_prime_returns_false_for_1() {
+        // Panics with "cannot sample empty range" from random_range() call.
+        assert_eq!(true, is_probably_prime(1, NUM_TESTS));
+    }
+
     #[test]
     fn is_probably_prime_returns_true_for_carmichael_numbers() { // So-called Fermat pseudoprimes.
         assert_eq!(true, is_probably_prime(561, NUM_TESTS)); // First Carmichael number.
