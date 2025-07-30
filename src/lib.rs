@@ -1,6 +1,10 @@
 use std::io::Write;
 use rand::Rng;
 
+pub fn totient(p: i64, q: i64) -> i64 {
+    lcm(p-1, q-1)
+}
+
 // Algorithm described at http://csharphelper.com/howtos/howto_check_primality.html.
 // Also, see Brit Cruise's Fermat primality test video (Khan Academy).
 pub fn is_probably_prime(p: i64, k: u8) -> bool {
@@ -123,8 +127,17 @@ pub fn get_i64(prompt: &str) -> i64 {
 
 #[cfg(test)]
 mod tests {
-    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes, is_probably_prime};
+    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes, is_probably_prime, totient};
     const NUM_TESTS: u8 = 20;
+
+    #[test]
+    fn totient_results_match_wikipedia_table() { // https://en.wikipedia.org/wiki/Carmichael_function
+        assert_eq!(4, totient(3, 5));
+        assert_eq!(12, totient(7, 5));
+        assert_eq!(6, totient(7, 2));
+        assert_eq!(10, totient(11, 2));
+        assert_eq!(10, totient(11, 3));
+    }
 
     #[test]
     fn is_probably_prime_returns_true_for_2() {
