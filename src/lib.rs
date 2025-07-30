@@ -134,6 +134,7 @@ mod tests {
 
     #[test]
     fn totient_results_match_wikipedia_table() { // https://en.wikipedia.org/wiki/Carmichael_function
+        // Selected from table of first 36 values of Carmichael function.
         assert_eq!(4, totient(3, 5));
         assert_eq!(12, totient(7, 5));
         assert_eq!(6, totient(7, 2));
