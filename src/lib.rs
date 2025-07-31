@@ -1,6 +1,16 @@
 use std::io::Write;
 use rand::Rng;
 
+// Return random public exponent e in range 2 < e < totient and gcd(e, totient) = 1.
+pub fn random_exponent(totient: i64) -> i64 {
+    loop {
+        let e = rand::rng().random_range(3..totient);
+        if gcd(e, totient) == 1 {
+            return e;
+        }
+    }
+}
+
 // Algorithm described at https://en.wikipedia.org/wiki/RSA_cryptosystem.
 // See step 3 under "Key generation" section.
 pub fn totient(p: i64, q: i64) -> i64 {
