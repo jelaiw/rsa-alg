@@ -139,8 +139,18 @@ pub fn get_i64(prompt: &str) -> i64 {
 
 #[cfg(test)]
 mod tests {
-    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes, is_probably_prime, totient};
+    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes, is_probably_prime, totient, random_exponent};
     const NUM_TESTS: u8 = 20;
+
+    #[test]
+    fn random_exponent_expected_postconditions_true_for_happy_path() {
+        let p = 5;
+        let q = 7;
+        let totient = totient(p, q);
+        let e = random_exponent(totient);
+        assert!(e > 3 && e < totient);
+        assert_eq!(1, gcd(e, totient));
+    }
 
     #[test]
     fn totient_results_match_wikipedia_table() { // https://en.wikipedia.org/wiki/Carmichael_function
