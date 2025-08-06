@@ -238,6 +238,13 @@ mod tests {
     }
 
     #[test]
+    fn gcd_kulikov_lecture_examples() {
+        assert_eq!(8, gcd(24, 16));
+        assert_eq!(1, gcd(9, 17));
+        assert_eq!(239, gcd(239, 0));
+    }
+
+    #[test]
     fn gcd_expected_values_from_given_validation_table() {
         assert_eq!(6, gcd(270, 192));
         assert_eq!(77, gcd(7469, 2464));
