@@ -1,17 +1,18 @@
 use std::io::Write;
 use rand::Rng;
 
+// Return gcd(a,b),x,y where gcd(a,b)=ax+by.
 pub fn egcd(a: i64, b: i64) -> (i64, i64, i64) {
     if b == 0 {
-        (a, 1, 0)
+        (a, 1, 0) // gcd(a,0)=a*1+b*0 where x=1 and y=0.
     }
     else {
         let (d, p, q) = egcd(b, a % b);
         let x = q;
         let y = p - (a / b) * q;
 
-        assert!(a % d == 0 && b % d == 0);
-        assert_eq!(d, a * x + b * y);
+        assert!(a % d == 0 && b % d == 0); // d divides a and b.
+        assert_eq!(d, a * x + b * y); // gcd(a,b)=ax+by.
         (d, x, y)
     }
 }
