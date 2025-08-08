@@ -1,6 +1,21 @@
 use std::io::Write;
 use rand::Rng;
 
+pub fn egcd(a: i64, b: i64) -> (i64, i64, i64) {
+    if b == 0 {
+        (a, 1, 0)
+    }
+    else {
+        let (d, p, q) = egcd(b, a % b);
+        let x = q;
+        let y = p - (a / b) * q;
+
+        assert!(a % d == 0 && b % d == 0);
+        assert_eq!(d, a * x + b * y);
+        (d, x, y)
+    }
+}
+
 // Return random public exponent e in range 2 < e < totient and gcd(e, totient) = 1.
 pub fn random_exponent(totient: i64) -> i64 {
     loop {
@@ -139,8 +154,16 @@ pub fn get_i64(prompt: &str) -> i64 {
 
 #[cfg(test)]
 mod tests {
-    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes, is_probably_prime, totient, random_exponent};
+    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes, is_probably_prime, totient, random_exponent, egcd};
     const NUM_TESTS: u8 = 20;
+
+    #[test]
+    fn egcd_kulikov_lecture_examples() {
+        assert_eq!((2, -1, 2), egcd(10, 6));
+        assert_eq!((1, -2, 3), egcd(7, 5));
+        assert_eq!((23, -3, 4), egcd(391, 299));
+        assert_eq!((1, -37, 44), egcd(239, 201));
+    }
 
     #[test]
     fn random_exponent_expected_postconditions_true_for_happy_path() {
