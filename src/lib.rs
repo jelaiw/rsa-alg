@@ -265,6 +265,8 @@ mod tests {
         assert_eq!(8, gcd(24, 16));
         assert_eq!(1, gcd(9, 17));
         assert_eq!(239, gcd(239, 0));
+        assert_eq!(1, gcd(790933790548, 7)); // Test for expected performance. Benchmark?
+        assert_eq!(3416723, gcd(790933790547, 1849639579327));
     }
 
     #[test]
