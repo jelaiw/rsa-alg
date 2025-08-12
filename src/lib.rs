@@ -5,6 +5,9 @@ use rand::Rng;
 pub fn inverse_mod(a: i64, n: i64) -> i64 {
     let (d, s, _t) = egcd(a, n);
     assert!(d == 1);
+    // Interestingly not the same as s % n.
+    // See https://stackoverflow.com/a/57342011.
+    // Also, https://www.reddit.com/r/rust/comments/eh1f19/modulo/.
     s.rem_euclid(n)
 }
 
