@@ -44,6 +44,15 @@ pub fn totient(p: i64, q: i64) -> i64 {
     lcm(p-1, q-1)
 }
 
+pub fn find_prime(min: i64, max: i64, num_tests: u8) -> i64 {
+    loop {
+        let x = rand::rng().random_range(min..=max);
+        if x % 2 != 0 && is_probably_prime(x, num_tests) {
+            return x;
+        }
+    }
+}
+
 // Algorithm described at http://csharphelper.com/howtos/howto_check_primality.html.
 // Also, see Brit Cruise's Fermat primality test video (Khan Academy).
 pub fn is_probably_prime(p: i64, k: u8) -> bool {

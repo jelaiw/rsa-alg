@@ -1,14 +1,4 @@
-use rand::Rng;
-use rsa_alg::{get_i64, is_probably_prime};
-
-fn find_prime(min: i64, max: i64, num_tests: u8) -> i64 {
-    loop {
-        let x = rand::rng().random_range(min..=max);
-        if x % 2 != 0 && is_probably_prime(x, num_tests) {
-            return x;
-        }
-    }
-}
+use rsa_alg::{get_i64, find_prime};
 
 fn main() {
     const NUM_TESTS: u8 = 20;
