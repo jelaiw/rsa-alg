@@ -159,6 +159,14 @@ mod tests {
     const NUM_TESTS: u8 = 20;
 
     #[test]
+    fn egcd_kulikov_lecture_examples_swap_argument_order() { // Show that a >= b precondition not required.
+        assert_eq!((2, 2, -1), egcd(6, 10));
+        assert_eq!((1, 3, -2), egcd(5, 7));
+        assert_eq!((23, 4, -3), egcd(299, 391));
+        assert_eq!((1, 44, -37), egcd(201, 239));
+    }
+
+    #[test]
     fn egcd_kulikov_lecture_examples() {
         assert_eq!((2, -1, 2), egcd(10, 6));
         assert_eq!((1, -2, 3), egcd(7, 5));
