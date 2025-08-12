@@ -1,6 +1,13 @@
 use std::io::Write;
 use rand::Rng;
 
+// Return s, the inverse of a: gcd(a,n)=1=as+nt.
+pub fn inverse_mod(a: i64, n: i64) -> i64 {
+    let (d, s, _t) = egcd(a, n);
+    assert!(d == 1);
+    s.rem_euclid(n)
+}
+
 // Return gcd(a,b),x,y where gcd(a,b)=ax+by.
 pub fn egcd(a: i64, b: i64) -> (i64, i64, i64) {
     if b == 0 {
@@ -156,8 +163,14 @@ pub fn get_i64(prompt: &str) -> i64 {
 
 #[cfg(test)]
 mod tests {
-    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes, is_probably_prime, totient, random_exponent, egcd};
+    use super::{gcd, lcm, fast_exp, fast_exp_mod, sieve_of_eratosthenes, sieve_to_primes, is_probably_prime, totient, random_exponent, egcd, inverse_mod};
     const NUM_TESTS: u8 = 20;
+
+    #[test]
+    fn inverse_mod_selected_examples_from_happy_path() {
+        assert_eq!(5, inverse_mod(3, 7)); // Stephens example.
+        assert_eq!(5, inverse_mod(2, 9)); // Kulikov example.
+    }
 
     #[test]
     fn egcd_kulikov_lecture_examples_swap_argument_order() { // Show that a >= b precondition not required.
