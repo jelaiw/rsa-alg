@@ -21,3 +21,4 @@ Have fun!!
 2. "Carmichael number". Wikipedia, https://en.wikipedia.org/wiki/Carmichael_number.
 2. "RSA cryptosystem". Wikipedia, https://en.wikipedia.org/wiki/RSA_cryptosystem.
 2. "Carmichael's totient function". Wikipedia, https://en.wikipedia.org/wiki/Carmichael_function.
+2. "Euler's totient function". Cruise, B. Khan Academy, https://www.khanacademy.org/computing/computer-science/cryptography/modern-crypt/v/euler-s-totient-function-phi-function.

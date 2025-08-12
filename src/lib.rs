@@ -29,6 +29,7 @@ pub fn random_exponent(totient: i64) -> i64 {
 
 // Algorithm described at https://en.wikipedia.org/wiki/RSA_cryptosystem.
 // See step 3 under "Key generation" section.
+// Measures "breakability" of a number. From Cruise [16].
 pub fn totient(p: i64, q: i64) -> i64 {
     lcm(p-1, q-1)
 }
