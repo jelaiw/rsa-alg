@@ -8,7 +8,9 @@ fn main() {
     let n = p * q;
     let λ_n = totient(p, q);
     let e = random_exponent(λ_n);
-    let d = inverse_mod(e, n);
+    let d = inverse_mod(e, λ_n);
+
+    assert_eq!(1, e * d % λ_n);
 
     println!("public key");
     println!("==========");
