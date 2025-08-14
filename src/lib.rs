@@ -2,7 +2,7 @@ use std::io::Write;
 use rand::Rng;
 
 // Return s, the inverse of a: gcd(a,n)=1=as+nt.
-// Algorithm from Kulikov modular division lecture.
+// Algorithm from Kulikov modular division lecture [4].
 // Note s/t notation is flipped in Wikipedia [18].
 pub fn inverse_mod(a: i64, n: i64) -> i64 {
     let (d, s, _t) = egcd(a, n);
