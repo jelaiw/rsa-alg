@@ -23,4 +23,6 @@ Have fun!!
 2. "Carmichael's totient function". Wikipedia, https://en.wikipedia.org/wiki/Carmichael_function.
 2. "Euler's totient function". Cruise, B. Khan Academy, https://www.khanacademy.org/computing/computer-science/cryptography/modern-crypt/v/euler-s-totient-function-phi-function.
 2. "Computing multiplicative inverses in modular structures". Wikipedia, https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Computing_multiplicative_inverses_in_modular_structures.
+2. "Is there a modulus (not remainder) function". Kalbertodt, L. Stack Overflow, https://stackoverflow.com/a/57342011.
+2. "modulo". r/rust, https://www.reddit.com/r/rust/comments/eh1f19/modulo/.
 2. Rust i64 rem_euclid. https://doc.rust-lang.org/stable/std/primitive.i64.html#method.rem_euclid.
