@@ -5,9 +5,7 @@ Third project in Rod Stephens "Algorithms in Rust" Manning LiveProject series.
 
 Have fun!!
 
-## Guided Tour
-A quick run of each of the submitted programs.
-
+## Quick Tour
 ### RSA demo
 Textbook RSA proof-of-concept from final milestone.
 ```sh
@@ -67,6 +65,135 @@ b = 115430
 gcd(55290, 115430) = 970
 lcm(55290, 115430) = 6579510
 a = 
+
+thread 'main' panicked at src/lib.rs:175:28:
+Error parsing integer: ParseIntError { kind: Empty }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+$
+```
+
+### Fast Exponentiation
+```sh
+$ cargo run --bin fast_exp
+   Compiling rsa-alg v0.8.0 (/workspaces/rsa-alg)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.22s
+     Running `target/debug/fast_exp`
+8 ^ 6 = 262144
+8 ^ 6 % 10 = 4
+num = 7
+pow = 10
+mod = 101
+    fast_exp = 282475249
+    7 ^ 10 = 282475249
+
+    fast_exp_mod = 65
+    7 ^ 10 % 101 = 65
+---------
+num = 9
+pow = 13
+mod = 283
+    fast_exp = 2541865828329
+    9 ^ 13 = 2541865828329
+
+    fast_exp_mod = 179
+    9 ^ 13 % 283 = 179
+---------
+num = 213
+pow = 5
+mod = 100
+    fast_exp = 438427732293
+    213 ^ 5 = 438427732293
+
+    fast_exp_mod = 93
+    213 ^ 5 % 100 = 93
+---------
+num = 
+
+thread 'main' panicked at src/lib.rs:175:28:
+Error parsing integer: ParseIntError { kind: Empty }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+$
+```
+
+### Sieve of Eratosthenes
+```sh
+$ cargo run --bin sieve
+   Compiling rsa-alg v0.8.0 (/workspaces/rsa-alg)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.21s
+     Running `target/debug/sieve`
+max = 100
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 
+There are 25 primes less than 100.
+$
+```
+
+### Factoring Numbers
+```sh
+$ cargo run --bin factoring
+   Compiling rsa-alg v0.8.0 (/workspaces/rsa-alg)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.26s
+     Running `target/debug/factoring`
+Number to factor = 312680865509917
+find_factors: 68.230606ms
+find_factors_sieve: 5.059512ms
+
+Number to factor = 1819448968910731
+find_factors: 367.220113ms
+find_factors_sieve: 6.605636ms
+
+Number to factor = 12345678901234
+find_factors: 2.513371ms
+find_factors_sieve: 188.622µs
+
+Number to factor = 6795742697625173
+find_factors: 64.517246ms
+find_factors_sieve: 4.506721ms
+
+Number to factor = 64374108854777
+find_factors: 72.704245ms
+find_factors_sieve: 4.904232ms
+
+m = 312680865509917
+Factoring of 312680865509917: [40129483, 7791799]
+m = 12345678901234
+Factoring of 12345678901234: [12079920647, 73, 7, 2]
+m = 64374108854777
+Factoring of 64374108854777: [64374108854777]
+m = 
+
+thread 'main' panicked at src/lib.rs:175:28:
+Error parsing integer: ParseIntError { kind: Empty }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+$
+```
+
+### Primality Testing
+```sh
+$ cargo run --bin find_prime
+   Compiling rsa-alg v0.8.0 (/workspaces/rsa-alg)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.22s
+     Running `target/debug/find_prime`
+Probability of prime = 0.9999990463256836
+# digits (max 9): 9
+Probable prime is 330841727.
+# digits (max 9): 8
+Probable prime is 49460321.
+# digits (max 9): 7
+Probable prime is 5133509.
+# digits (max 9): 6
+Probable prime is 348463.
+# digits (max 9): 5
+Probable prime is 93607.
+# digits (max 9): 4
+Probable prime is 7541.
+# digits (max 9): 3
+Probable prime is 199.
+# digits (max 9): 2
+Probable prime is 97.
+# digits (max 9): 1
+Probable prime is 3.
+# digits (max 9): 
 
 thread 'main' panicked at src/lib.rs:175:28:
 Error parsing integer: ParseIntError { kind: Empty }
