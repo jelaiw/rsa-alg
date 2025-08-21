@@ -6,6 +6,8 @@ Third project in Rod Stephens "Algorithms in Rust" Manning LiveProject series.
 Have fun!!
 
 ## Guided Tour
+A quick run of each of the submitted programs.
+
 ### RSA demo
 Textbook RSA proof-of-concept from final milestone.
 ```sh
@@ -39,6 +41,35 @@ m = q
 
 thread 'main' panicked at src/lib.rs:175:28:
 Error parsing integer: ParseIntError { kind: InvalidDigit }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+$
+```
+
+### GCD and LCM
+Reproduce expected results from validation table provided in first milestone.
+
+```sh
+$ cargo run --bin gcd
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s
+     Running `target/debug/gcd`
+gcd(12, 18) = 6
+lcm(12, 18) = 36
+a = 270
+b = 192
+gcd(270, 192) = 6
+lcm(270, 192) = 8640
+a = 7469
+b = 2464
+gcd(7469, 2464) = 77
+lcm(7469, 2464) = 239008
+a = 55290
+b = 115430
+gcd(55290, 115430) = 970
+lcm(55290, 115430) = 6579510
+a = 
+
+thread 'main' panicked at src/lib.rs:175:28:
+Error parsing integer: ParseIntError { kind: Empty }
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 $
 ```
