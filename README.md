@@ -5,6 +5,44 @@ Third project in Rod Stephens "Algorithms in Rust" Manning LiveProject series.
 
 Have fun!!
 
+## Guided Tour
+### RSA demo
+Textbook RSA proof-of-concept from final milestone.
+```sh
+$ cargo run --bin demo
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running `target/debug/demo`
+public key
+==========
+n = 49032317
+e = 11079847
+
+private key
+===========
+p = 5209, q = 9413
+λ(n) = 12254424
+d = 2563495
+
+m = 1234567
+ciphertext = 14506555
+plaintext = 1234567
+
+m = 1337
+ciphertext = 37620445
+plaintext = 1337
+
+m = 8675309
+ciphertext = 25810469
+plaintext = 8675309
+
+m = q
+
+thread 'main' panicked at src/lib.rs:175:28:
+Error parsing integer: ParseIntError { kind: InvalidDigit }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+$
+```
+
 ## References
 1. "Algorithms in Rust: Public Key Cryptography". Stephens, R. Manning LiveProject, https://www.manning.com/liveproject/public-key-cryptography-rust.
 2. OnlineGDB: online compiler and debugger for C/C++, https://www.onlinegdb.com/.
