@@ -201,6 +201,40 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 $
 ```
 
+## Tests
+Unit tests for library crate.
+
+```sh
+$ cargo test --lib
+   Compiling rsa-alg v0.8.0 (/workspaces/rsa-alg)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.50s
+     Running unittests src/lib.rs (target/debug/deps/rsa_alg-45623a73567348f0)
+
+running 18 tests
+test tests::egcd_kulikov_lecture_examples ... ok
+test tests::egcd_kulikov_lecture_examples_swap_argument_order ... ok
+test tests::fast_exp_expected_values_from_given_validation_table ... ok
+test tests::fast_exp_mod_expected_values_from_given_validation_table ... ok
+test tests::gcd_expected_values_from_given_validation_table ... ok
+test tests::gcd_kulikov_lecture_examples ... ok
+test tests::gcd_swap_argument_order ... ok
+test tests::inverse_mod_selected_examples_from_happy_path ... ok
+test tests::is_probably_prime_returns_false_for_1 ... ignored
+test tests::is_probably_prime_returns_true_for_2 ... ok
+test tests::is_probably_prime_well_studied_fermat_numbers ... ok
+test tests::is_probably_prime_returns_true_for_carmichael_numbers ... ok
+test tests::lcm_expected_values_from_given_validation_table ... ok
+test tests::sieve_of_eratosthenes_indexing_semantics ... ok
+test tests::random_exponent_expected_postconditions_true_for_happy_path ... ok
+test tests::sieve_to_primes_verify_max_100 ... ok
+test tests::sieve_of_eratosthenes_max_semantics ... ok
+test tests::totient_results_match_wikipedia_table ... ok
+
+test result: ok. 17 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+$
+```
+
 ## References
 1. "Algorithms in Rust: Public Key Cryptography". Stephens, R. Manning LiveProject, https://www.manning.com/liveproject/public-key-cryptography-rust.
 2. OnlineGDB: online compiler and debugger for C/C++, https://www.onlinegdb.com/.
