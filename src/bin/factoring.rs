@@ -111,6 +111,20 @@ mod tests {
     use rsa_alg::{sieve_of_eratosthenes, sieve_to_primes};
 
     #[test]
+    fn find_factors_sieve_input_too_big_for_sieve_size() {
+        const MAX_PRIME: usize = 18; // Biggest number sieve will consider.
+        let sieve = sieve_of_eratosthenes(MAX_PRIME);
+        let primes = sieve_to_primes(&sieve);
+
+        // https://doc.rust-lang.org/std/vec/struct.Vec.html#method.last
+        assert_eq!(17, *primes.last().unwrap()); // Sanity check sieve.
+        assert_eq!(find_factors_sieve(287, &primes), vec![41, 7]);
+        assert_eq!(find_factors_sieve(283, &primes), vec![283]);
+        assert_eq!(find_factors_sieve(289, &primes), vec![17, 17]); // Biggest m that this sieve can handle.
+//        assert_eq!(find_factors_sieve(361, &primes), vec![19, 19]); // Too big for this sieve. Incorrect result.
+    }
+
+    #[test]
     fn find_factors_sieve_stephens_combined() {
         const MAX_PRIME: usize = 10_000_000; // Biggest number sieve will consider.
         let sieve = sieve_of_eratosthenes(MAX_PRIME);
