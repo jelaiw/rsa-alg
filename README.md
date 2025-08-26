@@ -73,6 +73,8 @@ $
 ```
 
 ### Fast Exponentiation
+These examples show how to exit the program. Crash out on bad input. :-D
+
 ```sh
 $ cargo run --bin fast_exp
    Compiling rsa-alg v0.8.0 (/workspaces/rsa-alg)
@@ -129,6 +131,8 @@ $
 ```
 
 ### Factoring Numbers
+Benchmarks show speedup with a sieve.
+
 ```sh
 $ cargo run --bin factoring
    Compiling rsa-alg v0.8.0 (/workspaces/rsa-alg)
@@ -169,6 +173,8 @@ $
 ```
 
 ### Primality Testing
+Find random primes for generating RSA keys.
+
 ```sh
 $ cargo run --bin find_prime
    Compiling rsa-alg v0.8.0 (/workspaces/rsa-alg)
