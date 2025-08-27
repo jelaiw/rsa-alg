@@ -241,6 +241,25 @@ test result: ok. 17 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; fin
 $
 ```
 
+Some unit tests in factoring binary crate too.
+```sh
+$ cargo test --bin factoring
+   Compiling rsa-alg v0.8.0 (/workspaces/rsa-alg)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.35s
+     Running unittests src/bin/factoring.rs (target/debug/deps/factoring-14a37ce7a00ccda1)
+
+running 5 tests
+test tests::find_factors_sieve_input_too_big_for_sieve_size ... ok
+test tests::find_factors_kulikov_examples ... ok
+test tests::find_factors_stephens_solution_examples ... ok
+test tests::find_factors_stephens_validation_results ... ok
+test tests::find_factors_sieve_stephens_combined ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 10.44s
+
+$
+```
+
 ## References
 1. "Algorithms in Rust: Public Key Cryptography". Stephens, R. Manning LiveProject, https://www.manning.com/liveproject/public-key-cryptography-rust.
 2. OnlineGDB: online compiler and debugger for C/C++, https://www.onlinegdb.com/.
