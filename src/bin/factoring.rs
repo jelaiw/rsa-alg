@@ -49,6 +49,7 @@ fn find_factors(m: i64) -> Vec<i64> {
 }
 
 fn find_factors_sieve(m: i64, primes: &Vec<i64>) -> Vec<i64> {
+    // Simply checking if m < primes[-1]^2 seems insufficient. See unit test.
     let d = min_divisor_sieve(m, primes);
     if d == m { // m is prime.
         let v = vec![d];
@@ -111,7 +112,7 @@ mod tests {
     use rsa_alg::{sieve_of_eratosthenes, sieve_to_primes};
 
     #[test]
-    fn find_factors_sieve_input_too_big_for_sieve_size() {
+    fn find_factors_sieve_highlight_an_incorrect_result_when_sieve_too_small_for_input() {
         const MAX_PRIME: usize = 18; // Biggest number sieve will consider.
         let sieve = sieve_of_eratosthenes(MAX_PRIME);
         let primes = sieve_to_primes(&sieve);
@@ -121,7 +122,8 @@ mod tests {
         assert_eq!(find_factors_sieve(287, &primes), vec![41, 7]);
         assert_eq!(find_factors_sieve(283, &primes), vec![283]);
         assert_eq!(find_factors_sieve(289, &primes), vec![17, 17]); // Biggest m that this sieve can handle.
-//        assert_eq!(find_factors_sieve(361, &primes), vec![19, 19]); // Too big for this sieve. Incorrect result.
+//        assert_eq!(find_factors_sieve(361, &primes), vec![19, 19]); // Correct result. Sieve too small.
+        assert_eq!(find_factors_sieve(361, &primes), vec![361]); // Incorrect result, 361 is not prime.
     }
 
     #[test]
