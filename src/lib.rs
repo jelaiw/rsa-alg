@@ -181,6 +181,12 @@ mod tests {
     const NUM_TESTS: u8 = 20;
 
     #[test]
+    fn inverse_mod_dh_starter_1_challenge() { // https://cryptohack.org/courses/public-key/dh-starter-1/
+        assert_eq!(569, inverse_mod(209, 991));
+        assert_eq!(1, 569 * 209 % 991);
+    }
+
+    #[test]
     fn inverse_mod_selected_examples_from_happy_path() {
         assert_eq!(5, inverse_mod(3, 7)); // Stephens example.
         assert_eq!(5, inverse_mod(2, 9)); // Kulikov example.
