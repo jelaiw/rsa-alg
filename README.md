@@ -3,7 +3,7 @@ Repo for sharing solutions with fellow learners.
 
 Third project in Rod Stephens "Algorithms in Rust" Manning LiveProject series. 
 
-Have fun!!
+Happy learning!!
 
 ## Quick Tour
 ### RSA demo
