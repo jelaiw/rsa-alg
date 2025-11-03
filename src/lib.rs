@@ -14,6 +14,15 @@ pub fn inverse_mod(a: i64, n: i64) -> i64 {
 }
 
 /// Return gcd(a,b),x,y where gcd(a,b)=ax+by.
+/// 
+/// # Example
+/// ```
+/// let (gcd, x, y) = rsa_alg::egcd(10, 6); 
+///
+/// assert_eq!(2, gcd);
+/// assert_eq!(-1, x);
+/// assert_eq!(2, y);
+/// ```
 pub fn egcd(a: i64, b: i64) -> (i64, i64, i64) {
     if b == 0 {
         (a, 1, 0) // gcd(a,0)=a*1+b*0 where x=1 and y=0.
