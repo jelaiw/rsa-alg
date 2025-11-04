@@ -260,6 +260,19 @@ test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 $
 ```
 
+Toy doc test for `egcd`.
+```sh
+$ cargo test --doc
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+   Doc-tests rsa_alg
+
+running 1 test
+test src/lib.rs - egcd (line 19) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+```
+
 ## References
 1. "Algorithms in Rust: Public Key Cryptography". Stephens, R. Manning LiveProject, https://www.manning.com/liveproject/public-key-cryptography-rust.
 2. OnlineGDB: online compiler and debugger for C/C++, https://www.onlinegdb.com/.
